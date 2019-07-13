@@ -1,0 +1,11 @@
+#ignore .idea folder
+.idea/
+
+#ignore target folder for
+target/
+
+#ignore *.iml file
+*.iml
+
+#ignore damp Database files
+src/main/resources/*.db
