@@ -9,7 +9,7 @@
     <title>Analytic</title>
     <link rel="stylesheet" href="bootstrap-4.3.1/css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap-4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -36,12 +36,14 @@
         <th scope="col">Дата</th>
     </tr>
     </thead>
-    <% List<EmployeeSalaryEntity> employeeSalaryEntities;
-        if(request.getAttribute("resultList") == null) {
-            employeeSalaryEntities = new SqlResult().getResult(new ArrayList<>());
-        } else {
-            employeeSalaryEntities = (ArrayList<EmployeeSalaryEntity>) request.getAttribute("resultList");
+    <% List<EmployeeSalaryEntity> employeeSalaryEntities = (ArrayList<EmployeeSalaryEntity>) request.getAttribute("resultList");
+        List<String> inputParameters = new ArrayList<>();
+        if(employeeSalaryEntities != null && !employeeSalaryEntities.isEmpty()) {
+            for(EmployeeSalaryEntity position : employeeSalaryEntities) {
+                inputParameters.add(position.getPosition());
+            }
         }
+            employeeSalaryEntities = new SqlResult().getResult(inputParameters, request.getParameter("gender"));
         for (EmployeeSalaryEntity employeeSalaryEntity: employeeSalaryEntities) {%>
         <tbody>
             <tr>

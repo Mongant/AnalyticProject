@@ -10,7 +10,7 @@ public class SqlResult {
     private Statement statement;
     private ResultSet resultSet;
 
-    public List<EmployeeSalaryEntity> getResult(List<String> parameters) {
+    public List<EmployeeSalaryEntity> getResult(List<String> parameters, String genderParam) {
         String position;
         String programmingLanguage;
         String specialization;
@@ -29,7 +29,7 @@ public class SqlResult {
         String englishLevel;
         String subjectArea;
         String date;
-        String userAgrnt;
+        String userAgent;
 
         StringBuilder sb = new StringBuilder();
         List<EmployeeSalaryEntity> employeeSalaryEntities = new ArrayList<>();
@@ -44,6 +44,9 @@ public class SqlResult {
                 }
             }
             sb.append(")");
+        }
+        if(genderParam != null) {
+            sb.append("\nand GENDER = '" + genderParam + "'");
         }
         sb.append(";");
         String sql = sb.toString();
@@ -70,8 +73,8 @@ public class SqlResult {
                 englishLevel = resultSet.getString("ENGLISH_LEVEL");
                 subjectArea = resultSet.getString("SUBJECT_AREA");
                 date = resultSet.getString("DATE");
-                userAgrnt = resultSet.getString("USER_AGENT");
-                employeeSalaryEntities.add(new EmployeeSalaryEntity(position, programmingLanguage, specialization, totalWorkExperience, currentPlaceExperience, salaryMonth, changeSalaryIn_12_Month, city, companySize, companyType, gender, age, education, university, student, englishLevel, subjectArea, date, userAgrnt));
+                userAgent = resultSet.getString("USER_AGENT");
+                employeeSalaryEntities.add(new EmployeeSalaryEntity(position, programmingLanguage, specialization, totalWorkExperience, currentPlaceExperience, salaryMonth, changeSalaryIn_12_Month, city, companySize, companyType, gender, age, education, university, student, englishLevel, subjectArea, date, userAgent));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

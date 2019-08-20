@@ -22,9 +22,9 @@ public class EmployeeSalaryEntity {
     private String englishLevel;
     private String subjectArea;
     private String date;
-    private String userAgrnt;
+    private String userAgent;
 
-    public EmployeeSalaryEntity(String position, String programmingLanguage, String specialization, String totalWorkExperience, String currentPlaceExperience, int salaryMonth, int changeSalaryIn_12_Month, String city, String companySize, String companyType, char gender, int age, String education, String university, boolean student, String englishLevel, String subjectArea, String date, String userAgrnt) {
+    public EmployeeSalaryEntity(String position, String programmingLanguage, String specialization, String totalWorkExperience, String currentPlaceExperience, int salaryMonth, int changeSalaryIn_12_Month, String city, String companySize, String companyType, char gender, int age, String education, String university, boolean student, String englishLevel, String subjectArea, String date, String userAgent) {
         this.position = position;
         this.programmingLanguage = programmingLanguage;
         this.specialization = specialization;
@@ -43,7 +43,7 @@ public class EmployeeSalaryEntity {
         this.englishLevel = englishLevel;
         this.subjectArea = subjectArea;
         this.date = date;
-        this.userAgrnt = userAgrnt;
+        this.userAgent = userAgent;
     }
 
     public EmployeeSalaryEntity(String position) {
@@ -194,11 +194,11 @@ public class EmployeeSalaryEntity {
         this.date = date;
     }
 
-    public String getUserAgrnt() {
-        return StringUtils.nullable(userAgrnt);
+    public String getUserAgent() {
+        return StringUtils.nullable(userAgent);
     }
 
-    public void setUserAgrnt(String userAgrnt) {
-        this.userAgrnt = userAgrnt;
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
     }
 }

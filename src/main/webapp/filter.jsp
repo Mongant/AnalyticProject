@@ -16,8 +16,8 @@
                 </select>
         </div>
         <div class="col-md-3">
-                <input type="radio" name="gender" id="gender_m" value="m">M
-                <input type="radio" name="gender" value="f" id="gender_f">Ж
+                <input type="radio" name="gender" id="gender_m" value="m">Мужской
+                <input type="radio" name="gender" id="gender_f" value="f" >Женский
         </div>
         <div class="col-md-3">
             <input type="submit" class="btn btn-primary" value="Применить">
