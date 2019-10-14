@@ -1,8 +1,8 @@
-package com.mongant.analytics.dao;
+package com.mongant.analytics.entity;
 
 import com.mongant.analytics.util.StringUtils;
 
-public class EmployeeSalaryEntity {
+public class DeveloperSalary {
 
     private String position;
     private String programmingLanguage;
@@ -24,7 +24,10 @@ public class EmployeeSalaryEntity {
     private String date;
     private String userAgent;
 
-    public EmployeeSalaryEntity(String position, String programmingLanguage, String specialization, String totalWorkExperience, String currentPlaceExperience, int salaryMonth, int changeSalaryIn_12_Month, String city, String companySize, String companyType, char gender, int age, String education, String university, boolean student, String englishLevel, String subjectArea, String date, String userAgent) {
+    public DeveloperSalary() {
+    }
+
+    public DeveloperSalary(String position, String programmingLanguage, String specialization, String totalWorkExperience, String currentPlaceExperience, int salaryMonth, int changeSalaryIn_12_Month, String city, String companySize, String companyType, char gender, int age, String education, String university, boolean student, String englishLevel, String subjectArea, String date, String userAgent) {
         this.position = position;
         this.programmingLanguage = programmingLanguage;
         this.specialization = specialization;
@@ -46,7 +49,7 @@ public class EmployeeSalaryEntity {
         this.userAgent = userAgent;
     }
 
-    public EmployeeSalaryEntity(String position) {
+    public DeveloperSalary(String position) {
         this.position = position;
     }
 

@@ -1,5 +1,8 @@
 package com.mongant.analytics.dao;
 
+import com.mongant.analytics.entity.DeveloperSalary;
+import com.mongant.analytics.entity.DeveloperSalary;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +13,7 @@ public class SqlResult {
     private Statement statement;
     private ResultSet resultSet;
 
-    public List<EmployeeSalaryEntity> getResult(List<String> parameters, String genderParam) {
+    public List<DeveloperSalary> getResult(List<String> parameters, String genderParam) {
         String position;
         String programmingLanguage;
         String specialization;
@@ -32,7 +35,7 @@ public class SqlResult {
         String userAgent;
 
         StringBuilder sb = new StringBuilder();
-        List<EmployeeSalaryEntity> employeeSalaryEntities = new ArrayList<>();
+        List<DeveloperSalary> employeeSalaryEntities = new ArrayList<>();
         sb.append("select * from PROGRAMMING_EMPL_INFO.JUNE_2018");
         if(parameters != null && !parameters.isEmpty()) {
             sb.append(" where POSITION in ('");
@@ -74,7 +77,7 @@ public class SqlResult {
                 subjectArea = resultSet.getString("SUBJECT_AREA");
                 date = resultSet.getString("DATE");
                 userAgent = resultSet.getString("USER_AGENT");
-                employeeSalaryEntities.add(new EmployeeSalaryEntity(position, programmingLanguage, specialization, totalWorkExperience, currentPlaceExperience, salaryMonth, changeSalaryIn_12_Month, city, companySize, companyType, gender, age, education, university, student, englishLevel, subjectArea, date, userAgent));
+                employeeSalaryEntities.add(new DeveloperSalary(position, programmingLanguage, specialization, totalWorkExperience, currentPlaceExperience, salaryMonth, changeSalaryIn_12_Month, city, companySize, companyType, gender, age, education, university, student, englishLevel, subjectArea, date, userAgent));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -91,10 +94,10 @@ public class SqlResult {
         return employeeSalaryEntities;
     }
 
-    public List<EmployeeSalaryEntity> getPositionSet() {
+    public List<DeveloperSalary> getPositionSet() {
         String position;
 
-        List<EmployeeSalaryEntity> positions = new ArrayList<>();
+        List<DeveloperSalary> positions = new ArrayList<>();
         String sql = "select distinct POSITION\n" +
                      "  from PROGRAMMING_EMPL_INFO.JUNE_2018\n" +
                      " order by POSITION";
@@ -104,7 +107,7 @@ public class SqlResult {
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 position = resultSet.getString("POSITION");
-                positions.add(new EmployeeSalaryEntity(position));
+                positions.add(new DeveloperSalary(position));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
